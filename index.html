@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Property Data Extractor</title>
+    <link href="https://cdn.jsdelivr.net/npm/n8n-chat/dist/style.css" rel="stylesheet" />
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .chat-container {
+            width: 100%;
+            max-width: 800px;
+            height: 90vh;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            overflow: hidden;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="chat-container" id="n8n-chat"></div>
+
+    <script type="module">
+        import { createChat } from 'https://cdn.jsdelivr.net/npm/n8n-chat/dist/chat.bundle.es.js';
+
+        createChat({
+            webhookUrl: 'https://flow.dlabs.com.my/webhook/27d5d8bc-afa1-41d8-a41d-4e5e76c77a76/chat', // <--- PASTE YOUR N8N URL HERE
+            target: '#n8n-chat',
+            mode: 'fullscreen', 
+            showWelcomeScreen: true,
+            initialMessages: [
+                'Hello! I can help you check property auction details.',
+                'Please paste the property details below (e.g., "No. B-08-07, Block Baris @ Amanja, 947 sqft").'
+            ],
+            i18n: {
+                en: {
+                    title: 'Property Auction AI ChatBot',
+                    subtitle: 'Convert addresses to property auction detail',
+                },
+            },
+        });
+    </script>
+</body>
+</html>
